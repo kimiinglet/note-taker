@@ -8,17 +8,17 @@ router.get("/notes", function (req, res) {
     //calling to dependency store
     store
     //from the dependency we are getting Notes
-    .getNotes()
+    .getNote()
         // then when we will responsd with the notes asked for
         .then(notes => res.json(notes))
-            //
+            // catch any errors. 
             .catch(err => res.status(500).json(err))
 });
 
 router.post("/notes", function (req, res) {
     store
     //passing the body of the request
-    .addNotes(req.body)
+    .addNote(req.body)
         // creating a new note
         .then(notes => res.json(note))
     .catch(err => res.status(500).json(err))

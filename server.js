@@ -1,6 +1,5 @@
 ///Dependencies
 const express = require("express");
-const fs = require("fs");
 const apiR = require("./routes/apiR.js");
 const htmlR = require("./routes/htmlR.js");
 
@@ -16,7 +15,7 @@ app.use(express.static("public"));
 
 // what youre seeing in the browser
 app.use("/", htmlR);
-// app.use("/api", apiR);
+app.use("/api", apiR);
 
 app.listen(PORT, function () {
     console.log("App listening on PORT: " + PORT);
