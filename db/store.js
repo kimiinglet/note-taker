@@ -21,17 +21,29 @@ class Store {
     }
 
     getNote() {
-
+        return this.read()
+        .then(notes => {
+            //variable were going to set to an array
+            let parseNotes;
+            //do this
+            try {
+                // .concat combines strings together
+                parseNotes = [].concat(JSON.parse(notes));
+            }
+            catch(err) {
+                parseNotes = [];
+            }
+            return parseNotes;
+        })
     }
 
     addNote(note) {
-
+// how to append the note to the page
     }
 
     deleteNote(id) {
-
+// how to delete the note selected
     }
-
     
 }
 
