@@ -6,9 +6,10 @@ const store = require("../db/store");
 //getting info from database
 router.get("/notes", function (req, res) {
     //calling to dependency store
+    console.log('apiR get /notes called')
     store
     //from the dependency we are getting Notes
-    .getNote()
+    .getNotes()
         // then when we will responsd with the notes asked for
         .then(notes => res.json(notes))
             // catch any errors. 
@@ -21,7 +22,7 @@ router.post("/notes", function (req, res) {
     .addNote(req.body)
         // creating a new note
         .then(note => res.json(note))
-    .catch(err => res.status(500).json(err))
+    //.catch(err => res.status(500).json(err))
 
 });
 

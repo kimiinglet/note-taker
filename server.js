@@ -14,9 +14,9 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(express.static("db"));
 
+app.use("/api", apiR);
 // what youre seeing in the browser
 app.use("/", htmlR);
-app.use("/api", apiR);
 
 app.listen(PORT, function () {
     console.log("App listening on PORT: " + PORT);
