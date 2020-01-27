@@ -12,6 +12,21 @@ class Store {
     constructor() {
         //keeping track of last note written
         this.lastId = 0
+        //for loop looping through exsiting notes and find the highest ID
+        //reading all the notes
+        var file = fs.readFileSync('./db.json', { encoding: 'utf8' });
+        //if we got something, we try to parse to JSON
+        if (file.length > 0) {
+            var existingNotes = JSON.parse(file);
+            //loops through to check id against last id
+            for (let i = 0; i < existingNotes.length; i++) {
+                const note = existingNotes[i];
+                //If lastID < notedId we save it for later
+                if (this.lastId < note.id) {
+                    this.lastId = note.id;
+                }
+            }
+        }
     }
     read() {
         return readFileAsync("./db.json", "utf8")
@@ -61,11 +76,26 @@ class Store {
     }
     deleteNote(id) {
 
-        //   * DELETE `/api/notes/:id` - Should recieve a query paramter containing 
-        // the id of a note to delete. This means you'll need to find a way to give each note a unique `id` when 
-        // it's saved. In order to delete a note, you'll need to read all notes from the `db.json` file, remove 
-        // the note with the given `id` property, and then rewrite the notes to the `db.json` file.
-        
+        //create a loop that loops through all of the notes to grab the note with id = id
+        return this.read()
+            .then(notes => {
+
+                notes = [].concat(JSON.parse(notes))
+                for (let i = 0; i < notes.length; i++) {
+                    const note = notes[i];
+                    if (note.id == id) {
+                        //delete note from array
+                        //splice(position, total, push the rest to cont array)
+                        notes.splice(i, 1)
+                        //break is to stop the loop
+                        break;
+                    }
+                }
+                //now we need to save
+                this.write(notes)
+
+            })
+
 
 
     }
