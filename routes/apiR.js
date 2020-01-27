@@ -20,7 +20,7 @@ router.post("/notes", function (req, res) {
     //passing the body of the request
     .addNote(req.body)
         // creating a new note
-        .then(notes => res.json(note))
+        .then(note => res.json(note))
     .catch(err => res.status(500).json(err))
 
 });
