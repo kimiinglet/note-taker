@@ -1,11 +1,32 @@
-# Note-Taker
-An app that can be used to write, save, and delete notes. My first foray into using express and writing back-end code. It will retrieve note data from a JSON file.
+# Note Taker
 
------
+## Description
 
-## Demonstration 
+An application that can be used to write, save, and delete notes. My first foray into using express and writing back-end code. It will retrieve note data from a JSON file.
 
-![Demonstration of Note Taker as a gif](https://github.com/cml2377/Note-Taker/blob/master/public/assets/demo.gif)
+
+* The following HTML routes were created:
+
+  * GET `/notes` - return the `notes.html` file.
+
+  * GET `*` - return the `index.html` file
+
+
+* The following API routes were be created:
+
+  * GET `/api/notes` - reads the `db.json` file and return all saved notes as JSON.
+
+  * POST `/api/notes` - recieves a new note to save on the request body, add it to the `db.json` file, and then return the new note.
+
+  * DELETE `/api/notes/:id` - recieves a query paramter containing the id of a note to delete. 
+
+## User Story
+
+AS A user, I want to be able to write and save notes
+
+I WANT to be able to delete notes I've written before
+
+SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 ## Business Context
 
@@ -18,7 +39,16 @@ When you get to the notes page, on the left, you see saved notes along with a de
 On the right, you can create a new note with a title and notes within the description. 
 On the top right-hand corner, you can click save to automatically save the new note to the list on the left. 
 
+
 ## Credit and Thanks
 - Anthony Garza
-- Crystal Ly
 - Bootcamp TA's
+
+## Check out my work:
+
+* Website: https://note-taker-boom.herokuapp.com/
+
+* GitHub: https://github.com/kimiinglet/note-taker
+
+
+<img src="./screenshot.png">
